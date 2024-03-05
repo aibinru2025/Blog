@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.blog.modules.sys.dao.SysRoleDao">
+
+
+    <select id="queryByRoleName" resultType="com.blog.modules.sys.entity.SysRoleEntity">
+        select * from sys_role where name = #{name}
+    </select>
+
+</mapper>

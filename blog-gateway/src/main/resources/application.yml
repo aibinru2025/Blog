@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: blog-gateway
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 139.224.248.106:8848
+    gateway:
+#      discovery:
+#        locator:
+#          # 是否从注册中心读取服务
+#          enabled: true
+      routes:
+        # 服务的ID，唯一即可一般与微服务的service name一致
+        - id: blog-admin
+          # lb表示负载均衡
+          uri: lb://blog-admin
+          predicates:
+            # 路径匹配,所有order的请求都转发到cloud-order-service
+            - Path=/admin/**
+          filters:
+            - RewritePath=/admin/(?<segment>.*),/$\{segment}
